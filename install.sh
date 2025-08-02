@@ -23,22 +23,17 @@ git clone "$REPO_URL"
 cd "$REPO_DIR"
 
 echo "Creating virtual environment (.venv) and installing dependencies..."
-uv init SignalSurfer-install
-cd SignalSurfer-install
-# uv venv 
-#&& uv sync
-
+uv init
+uv venv
 source .venv/bin/activate
 uv add pyinstaller
 
 echo "Building the app..."
 .venv/bin/python -m PyInstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns --noconfirm main.py
 
+deactivate
 cd ..
-rm -rf SignalSurfer-install
+rm -rf "$REPO_DIR"
 
-echo "✅ Build complete! The app is in the 'dist' folder."
-echo ""
-echo "To activate the virtual environment manually, run:"
-echo "cd $REPO_DIR"
-echo "source .venv/bin/activate"
+
+echo "✅ Build complete! The app is in the 'dist' folder."s
