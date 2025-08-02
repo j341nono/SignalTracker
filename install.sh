@@ -23,7 +23,7 @@ git clone "$REPO_URL"
 cd "$REPO_DIR"
 
 echo "Creating virtual environment (.venv) and installing dependencies..."
-uv venv 
+uv venv && uv sync
 
 echo "Building the app..."
 .venv/bin/python -m PyInstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns --noconfirm main.py
