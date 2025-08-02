@@ -24,7 +24,6 @@ git clone "$REPO_URL"
 cd "$REPO_DIR"
 
 echo "Creating virtual environment (.venv) and installing dependencies..."
-uv init
 uv venv
 source .venv/bin/activate
 uv add pyinstaller
