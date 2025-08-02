@@ -21,6 +21,7 @@ fi
 echo "Cloning SignalSurfer..."
 git clone "$REPO_URL"
 cd "$REPO_DIR"
+echo "--------------"
 ls assets/
 
 echo "Creating virtual environment (.venv) and installing dependencies..."
