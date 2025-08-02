@@ -1,3 +1,5 @@
+![project_banner](./assets/banner.png)
+
 # Signal Surfer
 
 **Signal Surfer** is a macOS desktop application that visualizes your current Wi-Fi signal strength using dynamic animations.
