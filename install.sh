@@ -20,6 +20,13 @@ fi
 
 echo "Cloning SignalSurfer..."
 git clone "$REPO_URL"
+
+
+cd SignalSurfer
+ls -l
+
+
+
 cd "$REPO_DIR"
 echo "--------------"
 ls assets/
