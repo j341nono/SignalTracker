@@ -25,8 +25,6 @@ curl -sL https://raw.githubusercontent.com/j341nono/SignalSurfer/main/install.sh
 
 Alternatively, you can clone the repository and build the app manually:
 
-Clone the repository and build the app:
-
 ```bash
 git clone git@github.com:j341nono/SignalSurfer.git
 cd SignalSurfer
@@ -44,5 +42,5 @@ Requires Python 3.8+ and pyinstaller installed in your environment.
 ## Usage
 After building, navigate to the dist/ directory:
 
-- cd dist/
+- `cd dist/`
 - Double-click on WiFi Signal Visualizer to launch the app.

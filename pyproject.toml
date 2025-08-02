@@ -8,3 +8,8 @@ dependencies = [
     "pyinstaller>=6.14.2",
     "pyobjc-framework-corewlan>=11.1",
 ]
+
+[tool.uv.workspace]
+members = [
+    "SignalSurfer",
+]
