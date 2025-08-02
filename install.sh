@@ -19,7 +19,7 @@ if [ -d "$REPO_DIR" ]; then
 fi
 
 echo "Cloning SignalSurfer..."
-git clone "$REPO_URL" -b dev
+git clone -b dev "$REPO_URL"
 
 
 cd SignalSurfer
