@@ -13,20 +13,23 @@ then
     exit 1
 fi
 
+if [ -d "$REPO_DIR" ]; then
+    echo "🔄 Removing existing '$REPO_DIR' directory..."
+    rm -rf "$REPO_DIR"
+fi
+
 echo "Cloning SignalSurfer..."
 git clone "$REPO_URL"
 cd "$REPO_DIR"
 
-echo "Creating virtual environment (.venv)..."
-uv venv
-
-echo "Installing dependencies with uv sync..."
-uv sync
-
-echo "Activating virtual environment..."
-source .venv/bin/activate
+echo "Creating virtual environment (.venv) and installing dependencies..."
+uv venv && uv sync
 
 echo "Building the app..."
-pyinstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=app.icns main.py
+.venv/bin/python -m PyInstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns --noconfirm main.py
 
-echo "✅ Build complete! You can find the app in the 'dist' folder."
+echo "✅ Build complete! The app is in the 'dist' folder."
+echo ""
+echo "To activate the virtual environment manually, run:"
+echo "cd $REPO_DIR"
+echo "source .venv/bin/activate"
