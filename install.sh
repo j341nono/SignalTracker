@@ -23,8 +23,10 @@ git clone "$REPO_URL"
 cd "$REPO_DIR"
 
 echo "Creating virtual environment (.venv) and installing dependencies..."
-uv venv && uv sync
+uv venv 
+#&& uv sync
 
+source .venv/bin/activate
 uv add pyinstaller
 
 echo "Building the app..."
