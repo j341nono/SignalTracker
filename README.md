@@ -12,16 +12,16 @@
 
 ---
 
-## Installation
+# Installation
 
-### For a quick and easy installation
+## For a quick and easy installation
 run the following command in your terminal:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/j341nono/SignalSurfer/main/install.sh | bash
 ```
 
-### manually
+## manually
 
 Alternatively, you can clone the repository and build the app manually:
 
@@ -31,11 +31,13 @@ Clone the repository and build the app:
 git clone git@github.com:j341nono/SignalSurfer.git
 cd SignalSurfer
 
-# (Optional) Create and activate virtual environment
+uv sync
 source .venv/bin/activate
 
 # Build the app
-pyinstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=app.icns main.py
+pyinstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns main.py
+
+deactivate
 ```
 Requires Python 3.8+ and pyinstaller installed in your environment.
 

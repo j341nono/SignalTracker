@@ -29,7 +29,7 @@ source .venv/bin/activate
 uv add pyinstaller
 
 echo "Building the app..."
-.venv/bin/python -m PyInstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns --noconfirm main.py
+.venv/bin/python -m PyInstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon assets/app.icns --noconfirm main.py
 
 deactivate
 cd ..
