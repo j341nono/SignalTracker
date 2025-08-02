@@ -19,7 +19,7 @@ if [ -d "$REPO_DIR" ]; then
 fi
 
 echo "Cloning SignalSurfer..."
-git clone "$REPO_URL"
+git clone "$REPO_URL" -b dev
 
 
 cd SignalSurfer
@@ -28,8 +28,6 @@ ls -l
 
 
 cd "$REPO_DIR"
-echo "--------------"
-ls assets/
 
 echo "Creating virtual environment (.venv) and installing dependencies..."
 uv init
