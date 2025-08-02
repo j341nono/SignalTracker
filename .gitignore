@@ -1,0 +1,20 @@
+# Build artifacts
+build/
+dist/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Project metadata
+*.egg-info/
+
+# Lock file (optional, if reproducibility isn't critical)
+uv.lock
+
+# macOS system file
+.DS_Store
+
+.venv
+
+test/
