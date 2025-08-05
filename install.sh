@@ -36,4 +36,4 @@ cd ..
 rm -rf "$REPO_DIR"
 
 
-echo "✅ Build complete! The app is in the 'dist' folder."s
+echo "✅ Build complete! The app is in the 'dist' folder."
