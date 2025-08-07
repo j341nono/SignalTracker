@@ -17,16 +17,21 @@ class Particle:
     def update(self):
         self.x += self.vx
         self.y += self.vy
+        self.vx *= 0.98
+        self.vy *= 0.98
+        self.radius *= 0.99
         self.life -= 1
 
     def is_alive(self):
         return self.life > 0
 
     def draw(self, canvas, root):
-        alpha = self.life / self.max_life
+        alpha = (self.life / self.max_life) ** 2
+        if alpha <= 0.01:
+            return
         try:
             r, g, b = root.winfo_rgb(self.color)
-            faded_color = f"#{int(r/256*alpha):02x}{int(g/256*alpha):02x}{int(b/256*alpha):02x}"
+            faded_color = f"#{int(r / 256 * alpha):02x}{int(g / 256 * alpha):02x}{int(b / 256 * alpha):02x}"
             canvas.create_oval(
                 self.x - self.radius, self.y - self.radius,
                 self.x + self.radius, self.y + self.radius,
