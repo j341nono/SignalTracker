@@ -47,19 +47,18 @@ After building, navigate to the dist/ directory:
 - `cd dist/`
 - Double-click on WiFi Signal Visualizer to launch the app.
 
-## Technologies Used for Wi-Fi Information Retrieval
+# Technologies Used for Wi-Fi Information Retrieval
 There are several methods available to retrieve Wi-Fi-related information such as SSID and RSSI on macOS. The following options were considered:
 
 ### airport Command-Line Tool (Deprecated)
 The airport tool is a command-line utility that provides detailed Wi-Fi information, including RSSI, SSID, BSSID, and more.
 
-Pros:
-- Easy to use via terminal or subprocess calls.
-- Provides detailed and structured information.
-
-Cons:
-- Deprecated by Apple and may be removed in future macOS releases.
-- Not officially supported or documented.
+- Pros
+    - Easy to use via terminal or subprocess calls.
+    - Provides detailed and structured information.
+- Cons
+    - Deprecated by Apple and may be removed in future macOS releases.
+    - Not officially supported or documented.
 
 Inconsistent behavior across OS versions.
 
@@ -70,13 +69,12 @@ Due to its deprecation status and lack of future support, airport is not a susta
 ### Wireless Diagnostics (wdutil)
 The wdutil command is the official command-line interface for Wireless Diagnostics, introduced in newer versions of macOS.
 
-Pros:
-- Officially provided by Apple.
-- Offers comprehensive diagnostics and Wi-Fi environment info.
-
-Cons:
-- Requires sudo for most commands, including info.
-- Not script-friendly due to privilege escalation and GUI prompts.
+- Pros
+    - Officially provided by Apple.
+    - Offers comprehensive diagnostics and Wi-Fi environment info.
+- Cons
+    - Requires sudo for most commands, including info.
+    - Not script-friendly due to privilege escalation and GUI prompts.
 
 Available only on recent macOS versions (e.g., Monterey and later).
 
@@ -87,16 +85,16 @@ While reliable and up-to-date, the need for elevated privileges (sudo) limits it
 ### CoreWLAN Framework (Selected)
 CoreWLAN is a native macOS framework that allows direct access to Wi-Fi interfaces via Objective-C or Python (via PyObjC).
 
-Pros:
-- Fully supported and documented API by Apple.
-- No need for sudo or terminal-based workarounds.
+- Pros
+    - Fully supported and documented API by Apple.
+    - No need for sudo or terminal-based workarounds.
 
 Compatible with GUI applications and scripting.
 
 Returns structured Wi-Fi information such as SSID, RSSI, BSSID, etc.
 
-Cons:
-- Requires use of Objective-C, Swift, or PyObjC (Python bridge).
+- Cons
+    - Requires use of Objective-C, Swift, or PyObjC (Python bridge).
 
 Reason for selection:
 
