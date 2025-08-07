@@ -69,5 +69,5 @@ def debug_2():
 
 
 if __name__ == "__main__":
-    # output = debug()
-    output = debug_2()
+    output = debug()
+    # output = debug_2()
