@@ -49,7 +49,8 @@ class WiFiVisualizer:
     def animate(self):
         self.displayed_strength += (self.target_strength - self.displayed_strength) * 0.04
         self.canvas.delete("all")
-        if self.rssi is None or self.rssi < WARNING_RSSI:
+
+        if self.rssi is None or self.rssi == 0 or self.rssi < WARNING_RSSI:
             self.drawer.draw_warning()
         else:
             self.drawer.draw_visuals(self.rssi)

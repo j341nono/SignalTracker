@@ -33,7 +33,7 @@ class CanvasDrawer:
         self.display_strength += (self.target_strength - self.display_strength) * 0.01
 
         def lerp_color(c1, c2, t):
-            from tkinter import colorchooser
+            # from tkinter import colorchooser
             def hex_to_rgb(hex_color):
                 hex_color = hex_color.lstrip("#")
                 return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
