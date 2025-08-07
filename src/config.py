@@ -1,0 +1,10 @@
+WIDTH = 600
+HEIGHT = 600
+CENTER_X = WIDTH / 2
+CENTER_Y = HEIGHT / 2
+STRONG_RSSI = -30
+WEAK_RSSI = -90
+WARNING_RSSI = -85
+UPDATE_INTERVAL_MS = 2000
+ANIMATION_FPS = 60
+AIRPORT_PATH = "/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport"

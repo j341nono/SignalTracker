@@ -5,7 +5,6 @@ set -e
 REPO_URL="https://github.com/j341nono/SignalSurfer.git"
 REPO_DIR="SignalSurfer"
 
-# uvコマンドがインストールされているか確認
 if ! command -v uv &> /dev/null
 then
     echo "❌ 'uv' is not installed. Please install it first."
@@ -14,7 +13,7 @@ then
 fi
 
 if [ -d "$REPO_DIR" ]; then
-    echo "🔄 Removing existing '$REPO_DIR' directory..."
+    echo "Removing existing '$REPO_DIR' directory..."
     rm -rf "$REPO_DIR"
 fi
 
@@ -29,7 +28,7 @@ source .venv/bin/activate
 uv add pyinstaller
 
 echo "Building the app..."
-.venv/bin/python -m PyInstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon assets/app.icns --noconfirm main.py
+.venv/bin/python -m PyInstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon assets/app.icns --noconfirm src/__main__.py
 
 deactivate
 cd ..

@@ -5,16 +5,14 @@ import sys
 APP = ['main.py']
 DATA_FILES = []
 
-# アイコンファイルが存在する場合のみ追加
 icon_options = {}
 if os.path.exists('app.icns'):
     icon_options['iconfile'] = 'app.icns'
 
-# zlibの問題を回避するための設定
 OPTIONS = {
     'argv_emulation': True,
     'alias': False,
-    'semi_standalone': True,  # フルスタンドアロンではなくセミスタンドアロン
+    'semi_standalone': True,
     'site_packages': False,
     'strip': True,
     'optimize': 2,
@@ -22,8 +20,8 @@ OPTIONS = {
         'numpy', 'scipy', 'matplotlib', 'pandas', 
         'IPython', 'jupyter', 'notebook'
     ],
-    'includes': [],  # includesを空にする
-    'packages': [],  # packagesも空にする
+    'includes': [],
+    'packages': [],
     **icon_options
 }
 
