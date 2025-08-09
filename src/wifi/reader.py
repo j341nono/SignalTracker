@@ -9,20 +9,31 @@ def _run_command(command, timeout=10):
     )
 
 def get_wifi_details_with_corewlan():
-    import objc
-    import CoreWLAN
-
-    client = CoreWLAN.CWWiFiClient.sharedWiFiClient()
-    interfaces = client.interfaces()
+    from CoreWLAN import CWInterface
+    interfaces = CWInterface.interface()
     if not interfaces:
         raise RuntimeError("No Wi-Fi interfaces found")
 
-    for iface in interfaces:
-        ssid = iface.ssid()
-        rssi = iface.rssiValue()
-        if rssi is not None:
-            return ssid or "Unknown", rssi
+    interface_name = interfaces.interfaceName()
+    # ssid = interfaces.ssid()
+    try:
+        cmd = [
+            "networksetup",
+            "-listpreferredwirelessnetworks",
+            interface_name
+        ]
+        output = subprocess.check_output(cmd, text=True)
+        lines = output.strip().split("\n")
+        if len(lines) >= 2:
+            ssid = lines[1].strip()
+    except Exception:
+        ssid = None
+    rssi = interfaces.rssiValue()
+
+    if rssi is not None:
+        return ssid or "Unknown", rssi
     return None, None
+
 
 def get_wifi_details_multiple_methods():
     try:
@@ -44,6 +55,7 @@ def debug():
     interface_name = interface.interfaceName()     # インターフェース名（例: "en0"）
     country_code = interface.countryCode()         # 国コード（例: "JP"）
     bssid = interface.bssid()                      # 接続中のAPのMACアドレス
+    config = interface.configuration()
 
     print("===== Wi-Fi 情報 =====")
     print(f"Interface: {interface_name}")
@@ -53,6 +65,8 @@ def debug():
     print(f"Noise: {noise} dBm")
     print(f"Transmit Rate: {transmit_rate} Mbps")
     print(f"Country Code: {country_code}")
+    print(f"conf: {config}")
+
 
     # print(f"Wi-FiのRSSI: {get_rssi()} dBm")
 

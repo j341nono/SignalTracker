@@ -15,6 +15,7 @@ class WiFiVisualizer:
         self.canvas.pack(fill=tk.BOTH, expand=True)
         self.drawer = CanvasDrawer(self.canvas, root)
 
+        self.ssid = None
         self.rssi = None
         self.target_strength = 0.0
         self.displayed_strength = 0.0
@@ -38,7 +39,8 @@ class WiFiVisualizer:
     def process_wifi_queue(self):
         try:
             while not self.wifi_data_queue.empty():
-                _, new_rssi = self.wifi_data_queue.get_nowait()
+                new_ssid, new_rssi = self.wifi_data_queue.get_nowait()
+                self.ssid = new_ssid
                 if new_rssi != self.rssi:
                     self.rssi = new_rssi
                     self.target_strength, _ = rssi_to_strength_color(self.rssi)
@@ -53,6 +55,6 @@ class WiFiVisualizer:
         if self.rssi is None or self.rssi == 0 or self.rssi < WARNING_RSSI:
             self.drawer.draw_warning()
         else:
-            self.drawer.draw_visuals(self.rssi)
+            self.drawer.draw_visuals(self.rssi, self.ssid)
         self.drawer.update_particles()
         self.root.after(int(1000 / ANIMATION_FPS), self.animate)

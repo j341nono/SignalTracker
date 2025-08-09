@@ -25,11 +25,10 @@ class CanvasDrawer:
             font=("Hiragino Sans", 16), fill="#a0a0a0")
         self.particles.clear()
 
-    def draw_visuals(self, rssi):
+    def draw_visuals(self, rssi, ssid):
         strength, color = rssi_to_strength_color(rssi)
         self.target_strength = strength
         self.target_color = color
-
         self.display_strength += (self.target_strength - self.display_strength) * 0.01
 
         def lerp_color(c1, c2, t):
@@ -53,6 +52,10 @@ class CanvasDrawer:
 
         self.canvas.create_arc(CENTER_X-100, CENTER_Y-100, CENTER_X+100, CENTER_Y+100,
             start=90, extent=359.9, outline="#333", style='arc', width=arc_width)
+
+        if ssid:
+            self.canvas.create_text(CENTER_X, CENTER_Y - 15, text=ssid,
+                font=("Arial", 20, "bold"), fill="#e0e0e0")
 
         if arc_angle > 0:
             self.canvas.create_arc(CENTER_X-100, CENTER_Y-100, CENTER_X+100, CENTER_Y+100,
