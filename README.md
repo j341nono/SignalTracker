@@ -35,7 +35,7 @@ uv sync
 source .venv/bin/activate
 
 # Build the app
-pyinstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns main.py
+pyinstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns src/__main__.py
 
 deactivate
 ```
