@@ -1,4 +1,9 @@
-![project_banner](./assets/banner.png)
+<table>
+  <tr>
+    <td><img src="./assets/banner_online.png" alt="project_banner_online"></td>
+    <td><img src="./assets/banner_offline.png" alt="project_banner_offline"></td>
+  </tr>
+</table>
 
 # Signal Surfer
 
