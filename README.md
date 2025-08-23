@@ -1,4 +1,4 @@
-![project_banner](./assets/banner.png)
+![project_banner](./assets/banner_online.png)
 
 # Signal Surfer
 
@@ -11,6 +11,8 @@
 - Real-time detection of Wi-Fi signal strength using macOS's CoreWLAN framework
 - Visual feedback with animations that vary depending on signal strength levels
 - Lightweight UI application packaged with PyInstaller
+
+![project_banner](./assets/banner_offline.png)
 
 ---
 
