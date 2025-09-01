@@ -1,106 +1,121 @@
+# Signal Tracker
+
+[🇯🇵 日本語](./README_ja.md) | 🇺🇸 English
+
 <table>
   <tr>
-    <td><img src="./assets/banner_online.png" alt="project_banner_online"></td>
-    <td><img src="./assets/banner_offline.png" alt="project_banner_offline"></td>
+    <td><img src="./assets/banner_online.png" alt="Signal Tracker Online Banner"></td>
+    <td><img src="./assets/banner_offline.png" alt="Signal Tracker Offline Banner"></td>
   </tr>
 </table>
 
-# Signal Tracker
-
 **Signal Tracker** is a macOS desktop application that visualizes your current Wi-Fi signal strength using dynamic animations.
 
----
+## ✨ Features
 
-## Features
+- **Real-time Wi-Fi monitoring**: Detects Wi-Fi signal strength using macOS's CoreWLAN framework
+- **Dynamic visual feedback**: Animations that vary based on signal strength levels
+- **Lightweight design**: Optimized UI application packaged with PyInstaller
+- **Native macOS integration**: Built specifically for macOS using Apple's official frameworks
 
-- Real-time detection of Wi-Fi signal strength using macOS's CoreWLAN framework
-- Visual feedback with animations that vary depending on signal strength levels
-- Lightweight UI application packaged with PyInstaller
+## 🚀 Installation
 
----
+### Quick Installation (Recommended)
 
-# Installation
-
-## For a quick and easy installation
-run the following command in your terminal:
+Run the following command in your terminal for a quick and easy installation:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/j341nono/SignalSurfer/main/install.sh | bash
 ```
 
-## manually
+### Manual Installation
 
 Alternatively, you can clone the repository and build the app manually:
 
 ```bash
+# Clone the repository
 git clone git@github.com:j341nono/SignalSurfer.git
 cd SignalSurfer
 
+# Set up the environment
 uv sync
 source .venv/bin/activate
 
-# Build the app
+# Build the application
 pyinstaller --onefile --windowed --name="WiFi Signal Visualizer" --icon=assets/app.icns src/__main__.py
 
+# Clean up
 deactivate
 ```
-Requires Python 3.8+ and pyinstaller installed in your environment.
 
-## Usage
-After building, navigate to the dist/ directory:
+**Requirements**: Python 3.8+ and PyInstaller
 
-- `cd dist/`
-- Double-click on WiFi Signal Visualizer to launch the app.
+## 💻 Usage
 
-# Technologies Used for Wi-Fi Information Retrieval
-There are several methods available to retrieve Wi-Fi-related information such as SSID and RSSI on macOS. The following options were considered:
+After building the application:
 
-### airport Command-Line Tool (Deprecated)
-The airport tool is a command-line utility that provides detailed Wi-Fi information, including RSSI, SSID, BSSID, and more.
+1. Navigate to the `dist/` directory
+2. Double-click on **WiFi Signal Visualizer** to launch the app
+3. The app will automatically start monitoring your Wi-Fi signal strength
+4. Visual feedback will update in real-time based on your signal quality
 
-- Pros
-    - Easy to use via terminal or subprocess calls.
-    - Provides detailed and structured information.
-- Cons
-    - Deprecated by Apple and may be removed in future macOS releases.
-    - Not officially supported or documented.
+## 🛠️ Technologies Used for Wi-Fi Information Retrieval
 
-Inconsistent behavior across OS versions.
+Several methods are available for retrieving Wi-Fi information such as SSID and RSSI on macOS. Here's our evaluation:
 
-Reason for rejection:
+### airport Command-Line Tool (❌ Deprecated)
 
-Due to its deprecation status and lack of future support, airport is not a sustainable option for long-term use.
+The `airport` tool is a command-line utility that provides detailed Wi-Fi information.
 
-### Wireless Diagnostics (wdutil)
-The wdutil command is the official command-line interface for Wireless Diagnostics, introduced in newer versions of macOS.
+**Pros:**
+- Easy to use via terminal or subprocess calls
+- Provides detailed and structured information
 
-- Pros
-    - Officially provided by Apple.
-    - Offers comprehensive diagnostics and Wi-Fi environment info.
-- Cons
-    - Requires sudo for most commands, including info.
-    - Not script-friendly due to privilege escalation and GUI prompts.
+**Cons:**
+- Deprecated by Apple and may be removed in future macOS releases
+- Not officially supported or documented
+- Inconsistent behavior across OS versions
 
-Available only on recent macOS versions (e.g., Monterey and later).
+**Decision:** Rejected due to deprecation status and lack of future support.
 
-Reason for partial rejection:
+### Wireless Diagnostics (wdutil) (⚠️ Limited Use)
 
-While reliable and up-to-date, the need for elevated privileges (sudo) limits its use in automated or GUI-based applications.
+The `wdutil` command is the official command-line interface for Wireless Diagnostics.
 
-### CoreWLAN Framework (Selected)
-CoreWLAN is a native macOS framework that allows direct access to Wi-Fi interfaces via Objective-C or Python (via PyObjC).
+**Pros:**
+- Officially provided by Apple
+- Offers comprehensive diagnostics and Wi-Fi environment info
 
-- Pros
-    - Fully supported and documented API by Apple.
-    - No need for sudo or terminal-based workarounds.
+**Cons:**
+- Requires `sudo` for most commands
+- Not script-friendly due to privilege escalation
+- Available only on recent macOS versions (Monterey and later)
 
-Compatible with GUI applications and scripting.
+**Decision:** Partially rejected due to sudo requirements limiting GUI application use.
 
-Returns structured Wi-Fi information such as SSID, RSSI, BSSID, etc.
+### CoreWLAN Framework (✅ Selected)
 
-- Cons
-    - Requires use of Objective-C, Swift, or PyObjC (Python bridge).
+CoreWLAN is a native macOS framework for direct Wi-Fi interface access.
 
-Reason for selection:
+**Pros:**
+- Fully supported and documented API by Apple
+- No need for `sudo` or terminal-based workarounds
+- Compatible with GUI applications and scripting
+- Returns structured Wi-Fi information (SSID, RSSI, BSSID, etc.)
 
-CoreWLAN provides a secure, stable, and future-proof way to access Wi-Fi information without requiring elevated privileges. It integrates well with Python via PyObjC and is suitable for both command-line tools and GUI applications.
+**Cons:**
+- Requires use of Objective-C, Swift, or PyObjC (Python bridge)
+
+**Decision:** Selected for being secure, stable, and future-proof without requiring elevated privileges.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source. Please check the LICENSE file for more details.
+
+## 🐛 Issues
+
+If you encounter any problems or have suggestions, please [create an issue](https://github.com/j341nono/SignalSurfer/issues) on GitHub.
