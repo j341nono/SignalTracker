@@ -5,9 +5,9 @@
   </tr>
 </table>
 
-# Signal Surfer
+# Signal Tracker
 
-**Signal Surfer** is a macOS desktop application that visualizes your current Wi-Fi signal strength using dynamic animations.
+**Signal Tracker** is a macOS desktop application that visualizes your current Wi-Fi signal strength using dynamic animations.
 
 ---
 
