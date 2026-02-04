@@ -7,7 +7,7 @@ REPO_DIR="SignalSurfer"
 
 if ! command -v uv &> /dev/null
 then
-    echo "❌ 'uv' is not installed. Please install it first."
+    echo "'uv' is not installed. Please install it first."
     echo "Installation guide: https://astral.sh/docs/uv#installation"
     exit 1
 fi
@@ -35,4 +35,4 @@ cd ..
 rm -rf "$REPO_DIR"
 
 
-echo "✅ Build complete! The app is in the 'dist' folder."
+echo "Build complete! The app is in the 'dist' folder."
